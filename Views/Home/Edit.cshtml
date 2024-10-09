@@ -1,0 +1,180 @@
+﻿@using WebApplication1.Models
+@model demo
+
+@{
+    ViewBag.Title = "Edit Document";
+}
+</br>
+<h2>Edit Document</h2>
+<style>
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
+
+
+    h2 {
+        text-align: center;
+        color: #4CAF50;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        border: none;
+        border-radius: 4px;
+        padding: 8px 12px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    /* Specific button styles */
+    .btn-danger {
+        background-color: #f44336;
+        color: white;
+    }
+
+        .btn-danger:hover {
+            background-color: #d32f2f;
+        }
+
+    .btn-primary {
+        background-color: #2196F3;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background-color: #1976D2;
+        }
+
+
+</style>
+
+<div class="row mt-5">
+    <div class="col-12">
+        @using (Html.BeginForm("Save", "Home", FormMethod.Post))
+        {
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="Division"><span class="text-danger">*</span> Division:</label>
+                    @Html.TextBoxFor(model => model.Division, new { @class = "form-control", id = "Division" })
+                    @Html.ValidationMessageFor(m => m.Division, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    <label for="Department">Department:</label>
+                    @Html.TextBoxFor(model => model.Department, new { @class = "form-control", id = "Department" })
+                    @Html.ValidationMessageFor(m => m.Department, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    <label for="Location">Location:</label>
+                    @Html.TextBoxFor(model => model.Location, new { @class = "form-control", id = "Location" })
+                    @Html.ValidationMessageFor(m => m.Location, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="DocumentNo">Document No:</label>
+                    @Html.TextBoxFor(model => model.DocumentNo, new { @class = "form-control", id = "DocumentNo" })
+                    @Html.ValidationMessageFor(m => m.DocumentNo, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    <label for="DocumentName">Document Name:</label>
+                    @Html.TextBoxFor(model => model.DocumentName, new { @class = "form-control", id = "DocumentName" })
+                    @Html.ValidationMessageFor(m => m.DocumentName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    <label for="Standards">Standards:</label>
+                    @Html.DropDownListFor(model => model.Standards, new SelectList(new List<string> { "ISO 9001", "ISO 9000", "ISO 9004", "ISO 90011" }), "Select standards", new { @class = "form-control", id = "Standards" })
+                    @Html.ValidationMessageFor(m => m.Standards, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="Applicableclauses">Applicable Clauses:</label>
+                    @Html.TextBoxFor(model => model.Applicableclauses, new { @class = "form-control", id = "Applicableclauses" })
+                    @Html.ValidationMessageFor(m => m.Applicableclauses, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    <label for="Issueno">Issue No:</label>
+                    @Html.TextBoxFor(model => model.Issueno, new { @class = "form-control", id = "Issueno" })
+                    @Html.ValidationMessageFor(m => m.Issueno, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    <label for="Revno">Rev No:</label>
+                    @Html.TextBoxFor(model => model.Revno, new { @class = "form-control", id = "Revno" })
+                    @Html.ValidationMessageFor(m => m.Revno, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="Preparer">Preparer:</label>
+                    @Html.TextBoxFor(model => model.Preparer, new { @class = "form-control", id = "Preparer" })
+                    @Html.ValidationMessageFor(m => m.Preparer, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    <label for="Reviewer">Reviewer:</label>
+                    @Html.TextBoxFor(model => model.Reviewer, new { @class = "form-control", id = "Reviewer" })
+                    @Html.ValidationMessageFor(m => m.Reviewer, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    <label for="Approver">Approver:</label>
+                    @Html.TextBoxFor(model => model.Approver, new { @class = "form-control", id = "Approver" })
+                    @Html.ValidationMessageFor(m => m.Approver, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="SelectedDate">Issue Date:</label>
+                    @Html.TextBoxFor(model => model.SelectedDate, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
+                    @Html.ValidationMessageFor(m => m.SelectedDate, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    <label for="Revdate">Rev Date:</label>
+                    @Html.TextBoxFor(model => model.Revdate, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
+                    @Html.ValidationMessageFor(m => m.Revdate, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    <label for="Docdate">Document Date:</label>
+                    @Html.TextBoxFor(model => model.Docdate, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
+                    @Html.ValidationMessageFor(m => m.Docdate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="DocumentLevel"><span class="text-danger">*</span> Document Level:</label>
+                    @Html.DropDownListFor(model => model.DocumentLevel, new SelectList(new List<string> { "Level 1", "Level 2", "Level 3", "Level 4" }), "Select Document Level", new { @class = "form-control", id = "DocumentLevel" })
+                    @Html.ValidationMessageFor(m => m.DocumentLevel, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4">
+                    @Html.HiddenFor(model => model.ID, new { @class = "form-control", id = "ID" })
+                    @Html.ValidationMessageFor(m => m.ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row mb-3 justify-content-center">
+                <div class="col-4 text-center">
+                    <button type="submit" class="btn btn-success w-100">Update</button>
+                </div>
+            </div>
+
+
+        }
+    </div>
+</div>

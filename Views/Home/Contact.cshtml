@@ -1,0 +1,154 @@
+﻿@model List<WebApplication1.Models.demo>
+
+@{
+    ViewBag.Title = "Display";
+}
+</br>
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+<style>
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
+
+
+    h2 {
+        text-align: center;
+        color: #4CAF50;
+        margin-bottom: 20px;
+    }
+
+
+    .table-container {
+        overflow-x: auto;
+        margin: 0 auto;
+        max-width: 1200px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-color: white;
+        padding: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        background-color: #fff;
+    }
+
+
+        table thead {
+            background-color: #f8f8f8;
+        }
+
+        table th, table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+
+        table th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        table td {
+            color: #333;
+            vertical-align: middle;
+        }
+
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+
+        table tr:hover {
+            background-color: #ddd;
+        }
+
+
+    .btn {
+        border: none;
+        border-radius: 4px;
+        padding: 8px 12px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    /* Specific button styles */
+    .btn-danger {
+        background-color: #f44336;
+        color: white;
+    }
+
+        .btn-danger:hover {
+            background-color: #d32f2f;
+        }
+
+    .btn-primary {
+        background-color: #2196F3;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background-color: #1976D2;
+        }
+</style>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Division</th>
+                <th>Department</th>
+                <th>Location</th>
+                <th>Document No</th>
+                <th>Document Name</th>
+                <th>Standards</th>
+                <th>Applicable Clauses</th>
+                <th>Issue No</th>
+                <th>Rev No</th>
+                <th>Preparer</th>
+                <th>Reviewer</th>
+                <th>Approver</th>
+                <th>Issue Date</th>
+                <th>Rev Date</th>
+                <th>Document Date</th>
+                <th>Document Level</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Division</td>
+                    <td>@item.Department</td>
+                    <td>@item.Location</td>
+                    <td>@item.DocumentNo</td>
+                    <td>@item.DocumentName</td>
+                    <td>@item.Standards</td>
+                    <td>@item.Applicableclauses</td>
+                    <td>@item.Issueno</td>
+                    <td>@item.Revno</td>
+                    <td>@item.Preparer</td>
+                    <td>@item.Reviewer</td>
+                    <td>@item.Approver</td>
+                    <td>@item.SelectedDate.ToShortDateString()</td>
+                    <td>@item.Revdate.ToShortDateString()</td>
+                    <td>@item.Docdate.ToShortDateString()</td>
+                    <td>@item.DocumentLevel</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    <a href="@Url.Action("DownloadExcel", "Home")" class="btn btn-primary">Download as Excel</a>
+</div>
